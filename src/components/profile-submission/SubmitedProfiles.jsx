@@ -44,7 +44,6 @@ export default function SubmitedProfiles() {
     if (submitSuccess) {
       localStorage.setItem("userProfile", JSON.stringify(values));
       console.log(JSON.stringify(values));
-
       timer = setInterval(() => {
         setCountdown((prevCountdown) => {
           if (prevCountdown <= 1) {

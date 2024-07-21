@@ -1,5 +1,5 @@
 import { Provider } from "react-redux";
-import RootLayout from "./routes/RootLayout";
+import Routes from "./routes/Routes";
 import { makeStyles } from "@material-ui/core/styles";
 import store from "./redux/store";
 import theme from "./assets/styles/globalstyle";
@@ -21,7 +21,7 @@ function App() {
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <RootLayout />
+          <Routes />
         </ThemeProvider>
       </Provider>
     </div>

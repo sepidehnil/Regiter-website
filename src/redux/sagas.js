@@ -48,7 +48,7 @@ function* submitFormSaga() {
 }
 
 function* rootSaga() {
-  yield takeEvery(SUBMIT_FORM, submitFormSaga);
+  yield takeEvery(SUBMIT_FORM, submitFormSaga); //every time submit_form dispatched the submitformsaga runs
 }
 
 export default rootSaga;

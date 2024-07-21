@@ -8,7 +8,7 @@ import {
 import VerticalLinearStepper from "../components/profile-stepper/VerticalLinearStepper";
 import Dashboard from "../components/dashboard/Dashboard";
 
-export default function RootLayout() {
+export default function Routes() {
   return (
     <Router>
       <Switch>

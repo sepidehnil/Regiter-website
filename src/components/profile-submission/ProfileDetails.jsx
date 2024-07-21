@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { setValues, setErrors } from "../../redux/actions";
+import { validators } from "../validation/validation";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -39,22 +40,22 @@ const ProfileDetails = () => {
     switch (id) {
       case "firstName":
       case "lastName":
-        isValid = /^[\u0600-\u06FF\s]*$/.test(value);
+        isValid = validators.nameValidate.test(value);
         break;
       case "nationalId":
-        isValid = /^\d{0,10}$/.test(value);
+        isValid = validators.nationalIdValidate.test(value);
         break;
       case "phoneNumber":
-        isValid = /^0\d{0,10}$/.test(value);
+        isValid = validators.phoneNumberValidate.test(value);
         break;
       case "day":
-        isValid = /^(0\d{0,1}|[12][0-9]{0,1}|3[01]{0,1})?$/.test(value);
+        isValid = validators.dayValidate.test(value);
         break;
       case "month":
-        isValid = /^(0\d{0,1}|1[012]{0,1})?$/.test(value);
+        isValid = validators.monthValidate.test(value);
         break;
       case "year":
-        isValid = /^(13[0-9]{0,2}|14?[0-3]{0,2})?$/.test(value);
+        isValid = validators.yearValidate.test(value);
         break;
       default:
         break;
@@ -67,6 +68,7 @@ const ProfileDetails = () => {
     const isValid = handleValidation(id, value);
     if (isValid) {
       dispatch(setValues({ [id]: value }));
+      console.log({ [id]: value });
     }
     dispatch(setErrors({ [id]: !isValid }));
   };

@@ -66,27 +66,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function getSteps() {
-  return ["ورود مشخصات", "پیش نمایش", "اطلاعات ثبت شده"];
-}
-
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <ProfileDetails />;
-    case 1:
-      return <ProfilePreview />;
-    case 2:
-      return <SubmitedProfiles />;
-    default:
-      return "Unknown step";
-  }
-}
+const STEPS = [
+  {
+    label: "ورود مشخصات",
+    content: <ProfileDetails />,
+  },
+  {
+    label: "پیش نمایش",
+    content: <ProfilePreview />,
+  },
+  {
+    label: "اطلاعات ثبت شده",
+    content: <SubmitedProfiles />,
+  },
+];
 
 export default function VerticalLinearStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const steps = getSteps();
   const dispatch = useDispatch();
   const values = useSelector((state) => state.form.values);
 
@@ -122,10 +119,6 @@ export default function VerticalLinearStepper() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
-
   return (
     <div className={classes.root}>
       <Stepper
@@ -134,7 +127,7 @@ export default function VerticalLinearStepper() {
         className={classes.stepper}
         connector={<CustomStepConnector />}
       >
-        {steps.map((label, index) => (
+        {STEPS.map(({ label, content }, index) => (
           <Step key={label}>
             <StepLabel
               StepIconComponent={CustomStepIcon}
@@ -155,7 +148,7 @@ export default function VerticalLinearStepper() {
               }}
             >
               <Typography StepIconComponent={CustomStepIcon}>
-                {getStepContent(index)}
+                {content}
               </Typography>
               <div className={classes.actionsContainer}>
                 <div className={classes.btnWrapper}>

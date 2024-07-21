@@ -12,7 +12,7 @@ const theme = createMuiTheme({
         body: {
           background:
             " linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(72,45,253,1) 100%)",
-          fontFamily: "iransansnum !important",
+          fontFamily: "iransansnum",
           boxSizing: "border-box",
           margin: "0",
           padding: "0",
